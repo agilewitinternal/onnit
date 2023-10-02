@@ -6,6 +6,18 @@
   height: 40vmin;
   pointer-events: none;
 }
+.textBox {
+  padding-top: 13px;
+  margin-left: 10px
+}
+.form {
+  width: 450px;
+  display: flex;
+  justify-content: space-between;
+}
+.disable {
+  opacity: 50%;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

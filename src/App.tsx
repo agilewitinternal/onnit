@@ -1,23 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { analytics, logEvent } from "../src/utils/firabase";
 
 function App() {
+  const [textData, setTextData] = useState("");
+  const updateFireBase = () => {
+    console.log("TEST====",textData)
+    logEvent(analytics, 'notification_received',{'test':`${textData}`});
+  }
+  const disabled: boolean = textData === ""
+ 
+ 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <form className="form">
+      <label>Enter your name:
+        <input type="text" className="textBox" onChange={e => setTextData(e.target.value)}/>
+      </label>
+      <button onClick={() => updateFireBase()} className = {disabled ? 'disable': ''}>Firebase</button>
+    </form>
       </header>
     </div>
   );
